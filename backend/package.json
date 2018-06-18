@@ -1,0 +1,16 @@
+{
+  "name": "todoList",
+  "version": "1.0.0",
+  "description": "second rest api",
+  "main": "app.js",
+  "repository": "git@github.com:h4rr21/todoList.git",
+  "author": "h4rry",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "global": "^4.3.2",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.10"
+  }
+}
