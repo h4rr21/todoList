@@ -6,11 +6,11 @@ const models = require('../db/models')
 router.use(bodyParser.json());
 
 // {
-// 	id:1,
-// 	taskname:'cocinar',
-// 	name: 'juan carlos',
-// 	description: 'el almuerzo',
-// 	status:'done'
+// 	"id":1,
+// 	"taskname":"cocinar",
+// 	"name": "juan carlos",
+// 	"description": "el almuerzo",
+// 	"status":"done"
 // }
 
 router.get('/', (req, res, next) => {
@@ -26,41 +26,34 @@ router.post('/', (req, res, next) => {
 	})
 })
 
+router.get('/:id', (req, res, next) => {
+	const id = req.params.id;
+	models.Tasks.findById(id).then((task)=>{
+		res.send(task);
+	})
+});
 
-// router.get('/', (req, res, next) => {
-// 	models.Images.findAll().then((allImages) => {
-// 		res.send(allImages);
-// 	})
-// })
+router.put('/:id', (req, res, next) => {
+	const data = req.body;
+	const id = req.params.id;
 
-// router.post('/', (req, res, next) => {
-// 	const data = req.body;
-// 	models.Images.create(data).then((singleImage) => {
-// 		res.send(singleImage);
-// 	})
-// })
-
-// router.get('/:id', (req, res, next) => {
-// 	const posicion = req.params.id;
-// 	models.Images.findById(id).then((image)=>{
-// 		res.send(image);
-// 	});
-// })
-
-// route.put('/:id', (req, res, next) => {
-// 	const data = req.body;
-// 	const id = req.params.id;
-
-// 	models.Images.findById(id).then(images) => {
-// 		image.update(data).then((image)  =>{
-// 			res.send(image);
-// 		})
-// 	}
-// })
+	models.Tasks.findById(id).then((task) => {
+		task.update(data).then((task)  => {
+			res.send(task);
+		})
+	})
+});
 
 // router.delete('/:pos', (req, res, next) => {
 // 	const posicion = req.params.pos;
-// 	res.send(images.splice(parseInt(posicion),1));
-// })
+// 	res.send(models.Tasks.splice(parseInt(posicion),1));
+
+//         // model.destroy({
+//         //     where: {
+//         //         id: req.params.id
+//         //     }
+//         // })
+
+// });
 
 module.exports = router;
